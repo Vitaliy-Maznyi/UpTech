@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::MimeResponds
   include PublicActivity::StoreController
-  before_action -> { doorkeeper_authorize! :api }, only: [:index, :show, :destroy]
+  before_action -> { doorkeeper_authorize! :api }, except: :index
   respond_to :json
 
 # show error in response if unauthorized
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
 
   protected
   def current_user
-    @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+    @current_user ||= User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
   end
 
   def is_creator?(event_id)
