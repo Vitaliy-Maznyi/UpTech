@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   include PublicActivity::Common
+  mount_base64_uploader :image, ImageUploader
 
   belongs_to :event
   belongs_to :user

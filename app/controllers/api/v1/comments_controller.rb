@@ -30,6 +30,6 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.permit(:content, :user_id)
+    params.permit(:content, :user_id, :image)
   end
 end
