@@ -11,4 +11,5 @@ class Event < ApplicationRecord
   validates :place, length: { maximum: 40, message: 'Must be less than 40 characters'}
   validates :purpose, length: { maximum: 150, message: 'Must be less than 150 characters'}
   validates :name, :place, :purpose, length: {minimum: 3, message: 'Must be at least 3 characters'}
+  validates :time, inclusion: { in: Time.now..Time.now+15.years, message: 'Cannot create event in past' }
 end

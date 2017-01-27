@@ -23,7 +23,7 @@ class Api::V1::EventsController < ApplicationController
     @event = Event.new(event_params)
     @participant = @event.participants.new(user_id: current_user.id) #add creator user id to participants table
     @event.user_id = current_user.id if current_user
-    if @participant.save
+    if @event.save
       redirect_to action: 'show', id: @event.id,  status: :created
     else
       render json: @event.errors, status: :unprocessable_entity
