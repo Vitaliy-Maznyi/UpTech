@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   use_doorkeeper
 
   devise_for :users,
-  only: :registrations, controllers: { registrations: 'api/v1/registrations' }
+  only: :registrations, controllers: { registrations: 'registrations' }
 
   root to: 'api/v1/events#index'
 

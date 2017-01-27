@@ -1,4 +1,4 @@
-class Api::V1::ParticipantsController < ApplicationController
+class Api::V1::ParticipantsController < Api::BaseController
   before_action only: [:create, :destroy] { |c| c.is_creator?(params[:event_id]) }
   before_action :set_event
 

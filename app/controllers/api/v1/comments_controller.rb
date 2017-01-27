@@ -1,4 +1,4 @@
-class Api::V1::CommentsController < ApplicationController
+class Api::V1::CommentsController < Api::BaseController
   before_action only: [:create] {|c| c.is_participant?(params[:event_id]) }
   before_action only: [:destroy] { |c| c.is_creator?(params[:event_id]) }
   before_action :set_event
