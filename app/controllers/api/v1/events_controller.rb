@@ -46,13 +46,12 @@ class Api::V1::EventsController < ApplicationController
   end
 
   private
-
   def event_params
-    params.permit(:name, :time, :place, :purpose, :user_id)
+    params.permit(:name, :time, :place, :purpose, :user_id, :image)
   end
 
   def event_update_params
-    params.permit(:name, :time, :place, :purpose)
+    params.permit(:name, :time, :place, :purpose, :image)
   end
 
   def set_event
